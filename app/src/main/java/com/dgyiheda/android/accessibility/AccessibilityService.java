@@ -177,6 +177,7 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                 AccessibilityNodeInfo disConnect = findNode(event.getSource(), "不在打卡范围内");
                 AccessibilityNodeInfo disConnect2 = findNode(event.getSource(), "未连接蓝牙考勤机");
                 AccessibilityNodeInfo search = findNode(event.getSource(), "正在搜寻蓝牙考勤机信号");
+                AccessibilityNodeInfo success = findNode(event.getSource(), "打卡成功");
 
                 ProcessUtils.killBackgroundProcesses(packName);
 
@@ -204,10 +205,11 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                             Log.d(TAG, "已经下过班了");
                             AppUtils.launchAppDetailsSettings(packName);
                             closeApp = true;
-//                            ProcessUtils.killBackgroundProcesses(packName);
-//                            jumpToAppDetailPage(null, packName);
                         }
 
+                    }
+                    if (success!=null){
+                        back();
                     }
 
                 } else {
@@ -347,7 +349,7 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                     closeApp = false;
                 } else if (x == 330 && y == 800) {
                     notification(status);
-                    back();
+
                 }
             }
 
