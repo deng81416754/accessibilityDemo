@@ -46,7 +46,7 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
     private String currentPackageName;
 
 
-    private int startAttendanceMinute = 45;
+    private int startAttendanceMinute = 50;
 
     private int endAttendanceMinute = 15;
     // 中午下班工作的结束分钟
