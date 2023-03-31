@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DennisAccessibility</string>
+    <string name="accessibility_service_description">辅助服务需要打开才能正常运行</string>
+</resources>
