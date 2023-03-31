@@ -1,0 +1,2 @@
+# accessibilityDemo
+利用accessibility执行自动化操作
