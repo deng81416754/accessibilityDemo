@@ -113,6 +113,8 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                 } else if (hours == 12 && minute <= endAttendanceMinute) {
                     Log.d(TAG, "进入下班卡，检测");
                     startCheck(Status.Down, event);
+                }else {
+                    Log.d(TAG, "不在工作时间范围内");
                 }
 
             }
@@ -178,6 +180,7 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                 AccessibilityNodeInfo disConnect2 = findNode(event.getSource(), "未连接蓝牙考勤机");
                 AccessibilityNodeInfo search = findNode(event.getSource(), "正在搜寻蓝牙考勤机信号");
                 AccessibilityNodeInfo success = findNode(event.getSource(), "打卡成功");
+                AccessibilityNodeInfo normal = findNode(event.getSource(), "正常");
 
                 ProcessUtils.killBackgroundProcesses(packName);
 
@@ -208,9 +211,10 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                         }
 
                     }
-                    if (success!=null){
-                        back();
+                    if (normal!=null){
+                       Log.d(TAG,"检测到打卡了");
                     }
+
 
                 } else {
                     Log.d(TAG, "未找到设备");
@@ -347,9 +351,9 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
                 //
                 if (x == 630 && y == 1400) {
                     closeApp = false;
-                } else if (x == 330 && y == 800) {
+                } else if (x == 330 && y == 880) {
                     notification(status);
-
+                    back();
                 }
             }
 
