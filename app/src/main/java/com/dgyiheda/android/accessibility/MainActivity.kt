@@ -115,8 +115,8 @@ class MainActivity : AppCompatActivity() {
         val accessibilitySettingsOn = AutoInstallerUtil.isAccessibilitySettingsOn(this)
 
         stringBuffer.append("辅助辅助状态：${accessibilitySettingsOn}\r\n")
-        stringBuffer.append("悬浮窗状态：${accessibilitySettingsOn}")
-        stringBuffer.append("悬浮窗状态：${accessibilitySettingsOn}")
+//        stringBuffer.append("悬浮窗状态：${accessibilitySettingsOn}")
+//        stringBuffer.append("悬浮窗状态：${accessibilitySettingsOn}")
 
         tvStatus.value.text = stringBuffer.toString()
         if (accessibilitySettingsOn) {
