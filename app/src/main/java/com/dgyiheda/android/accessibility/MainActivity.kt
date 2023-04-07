@@ -2,6 +2,7 @@ package com.dgyiheda.android.accessibility
 
 import android.app.ActivityManager
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvFlushed).setOnClickListener {
             Log.d("12", "34")
             initView()
+            getPermission()
         }
 
         findViewById<TextView>(R.id.tvBattery).setOnClickListener {
@@ -56,6 +58,47 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        val mForegroundService = Intent(this, ForegroundService::class.java)
+        mForegroundService.putExtra("Foreground", "This is a foreground service.");
+        // Android 8.0使用startForegroundService在前台启动新服务
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(mForegroundService)
+        } else {
+            startService(mForegroundService)
+        }
+    }
+
+    private fun getPermission() {
+
+//        XXPermissions.with(this)
+//            // 申请单个权限
+//            .permission(Permission.RECORD_AUDIO)
+//            // 申请多个权限
+//            .permission(Permission.Group.CALENDAR)
+//            // 设置权限请求拦截器（局部设置）
+//            //.interceptor(new PermissionInterceptor())
+//            // 设置不触发错误检测机制（局部设置）
+//            //.unchecked()
+//            .request(object : OnPermissionCallback {
+//
+//                override fun onGranted(permissions: MutableList<String>, allGranted: Boolean) {
+//                    if (!allGranted) {
+//                        toast("获取部分权限成功，但部分权限未正常授予")
+//                        return
+//                    }
+//                    toast("获取录音和日历权限成功")
+//                }
+//
+//                override fun onDenied(permissions: MutableList<String>, doNotAskAgain: Boolean) {
+//                    if (doNotAskAgain) {
+//                        toast("被永久拒绝授权，请手动授予录音和日历权限")
+//                        // 如果是被永久拒绝就跳转到应用权限系统设置页面
+//                        XXPermissions.startPermissionActivity(context, permissions)
+//                    } else {
+//                        toast("获取录音和日历权限失败")
+//                    }
+//                }
+//            })
     }
 
     override fun onResume() {

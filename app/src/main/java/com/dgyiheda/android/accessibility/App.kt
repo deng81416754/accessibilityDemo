@@ -1,6 +1,8 @@
 package com.dgyiheda.android.accessibility
 
 import android.app.Application
+import android.content.Intent
+import android.os.Build
 import com.zhouyou.http.EasyHttp
 import com.zhouyou.http.cache.model.CacheMode
 
@@ -18,5 +20,8 @@ class App : Application() {
             .setWriteTimeOut(60 * 100)
             .setConnectTimeout(60 * 100)
             .setCacheMode(CacheMode.NO_CACHE)
+
+
+
     }
 }
